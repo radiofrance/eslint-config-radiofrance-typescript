@@ -1,16 +1,16 @@
 {
-  "name": "eslint-config-radiofrance",
-  "version": "3.0.1",
-  "description": "ESLint shareable config for Radio France",
+  "name": "eslint-config-radiofrance-typescript",
+  "version": "1.0.0",
+  "description": "ESLint shareable config for TypeScript at Radio France",
   "license": "CECILL-B",
-  "repository": "radiofrance/eslint-config-radiofrance",
+  "repository": "radiofrance/eslint-config-radiofrance-typescript",
   "author": {
     "name": "Radio France",
     "email": "opensource@radiofrance.com",
     "url": "www.radiofrance.fr"
   },
   "engines": {
-    "node": ">=6"
+    "node": ">=8"
   },
   "scripts": {
     "lint": "eslint .",
@@ -43,20 +43,24 @@
     "verify",
     "enforce",
     "hint",
-    "simple",
-    "sindre"
+    "simple"
   ],
   "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/parser": "^2.29.0",
     "eslint-config-xo": "^0.29.1",
-    "eslint-plugin-promise": "^4.1.1"
+    "eslint-config-xo-typescript": "^0.28.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "typescript": "^3.8.3"
   },
   "devDependencies": {
     "ava": "^3.7.1",
-    "eslint": "^6.8.0",
-    "is-plain-obj": "^2.1.0"
+    "eslint": "^6.8.0"
   },
   "peerDependencies": {
-    "eslint": ">=6.8.0"
+    "@typescript-eslint/eslint-plugin": ">=2.29.0",
+    "eslint": ">=6.8.0",
+    "typescript": ">=3.5.3"
   },
   "eslintConfig": {
     "extends": "xo/esnext",
