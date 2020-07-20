@@ -46,16 +46,16 @@
     "simple"
   ],
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "2.31.0",
-    "@typescript-eslint/parser": "2.31.0",
-    "eslint-config-xo": "^0.29.1",
-    "eslint-config-xo-typescript": "^0.28.0",
+    "@typescript-eslint/eslint-plugin": "^3.6.1",
+    "@typescript-eslint/parser": "^3.6.1",
+    "eslint-config-xo": "^0.32.1",
+    "eslint-config-xo-typescript": "^0.31.0",
     "eslint-plugin-promise": "^4.1.1",
     "typescript": "^3.8.3"
   },
   "devDependencies": {
     "ava": "^3.7.1",
-    "eslint": "^6.8.0"
+    "eslint": "^7.5.0"
   },
   "peerDependencies": {
     "@typescript-eslint/eslint-plugin": ">=2.29.0",
