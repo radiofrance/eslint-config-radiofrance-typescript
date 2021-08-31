@@ -8,5 +8,17 @@ module.exports = {
     'no-console': 'error',
 
     'promise/no-return-wrap': 'off'
-  }
+  },
+  overrides: [
+    {
+      files: [
+        'test/**/*.ts'
+      ],
+      rules: {
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+      }
+    }
+  ]
 };
