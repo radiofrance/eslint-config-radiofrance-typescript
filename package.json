@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-radiofrance-typescript",
-  "version": "2.0.0-2",
+  "version": "2.0.0",
   "description": "ESLint shareable config for TypeScript at Radio France",
   "license": "CECILL-B",
   "repository": "radiofrance/eslint-config-radiofrance-typescript",
