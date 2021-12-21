@@ -50,16 +50,16 @@
     "@typescript-eslint/parser": "^5.1.0",
     "eslint-config-xo": "^0.39.0",
     "eslint-config-xo-typescript": "^0.44.0",
-    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-promise": "^6.0.0",
     "typescript": "^4.3.5"
   },
   "devDependencies": {
     "ava": "^3.7.1",
-    "eslint": "^8.1.0"
+    "eslint": "^8.5.0"
   },
   "peerDependencies": {
     "@typescript-eslint/eslint-plugin": ">=2.29.0",
-    "eslint": ">=6.8.0",
+    "eslint": ">=8.0.0",
     "typescript": ">=3.5.3"
   },
   "eslintConfig": {
