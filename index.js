@@ -18,6 +18,10 @@ module.exports = {
         '@typescript-eslint/no-unsafe-call': 'off',
         '@typescript-eslint/no-unsafe-member-access': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
+
+        // disable rules in prettier scope
+        '@typescript-eslint/object-curly-spacing': 'off',
+        '@typescript-eslint/quotes': 'off',
       }
     }
   ]
