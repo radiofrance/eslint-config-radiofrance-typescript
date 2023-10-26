@@ -1,30 +1,3 @@
-'use strict';
-
-module.exports = {
-  plugins: ['promise'],
-  extends: ['xo', 'xo-typescript/space', 'plugin:promise/recommended'],
-  rules: {
-    'capitalized-comments': 'off',
-    'promise/no-return-wrap': 'off',
-    'no-console': 'error',
-    // Rewrite naming convention rule to allow `snake_case`.
-    // Copy from https://github.com/xojs/eslint-config-xo-typescript/blob/main/index.js#L3
-    ...getNamingConventionRule(),
-  },
-  overrides: [
-    {
-      files: [
-        'test/**/*.ts',
-      ],
-      rules: {
-        '@typescript-eslint/no-unsafe-call': 'off',
-        '@typescript-eslint/no-unsafe-member-access': 'off',
-        '@typescript-eslint/no-unsafe-assignment': 'off',
-      },
-    },
-  ],
-};
-
 const getNamingConventionRule = () => ({
   '@typescript-eslint/naming-convention': [
     'error',
@@ -99,3 +72,27 @@ const getNamingConventionRule = () => ({
   ],
 });
 
+module.exports = {
+  plugins: ['promise'],
+  extends: ['xo', 'xo-typescript/space', 'plugin:promise/recommended'],
+  rules: {
+    'capitalized-comments': 'off',
+    'promise/no-return-wrap': 'off',
+    'no-console': 'error',
+    // Rewrite naming convention rule to allow `snake_case`.
+    // Copy from https://github.com/xojs/eslint-config-xo-typescript/blob/main/index.js#L3
+    ...getNamingConventionRule(),
+  },
+  overrides: [
+    {
+      files: [
+        'test/**/*.ts',
+      ],
+      rules: {
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+      },
+    },
+  ],
+};
