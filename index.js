@@ -82,6 +82,8 @@ module.exports = {
     // Rewrite naming convention rule to allow `snake_case`.
     // Copy from https://github.com/xojs/eslint-config-xo-typescript/blob/main/index.js#L3
     ...getNamingConventionRule(),
+    // Disable this rule because we need interface and type.
+    '@typescript-eslint/consistent-type-definitions': 'off',
   },
   overrides: [
     {
