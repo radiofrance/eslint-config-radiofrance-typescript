@@ -9,7 +9,7 @@ const hasRule = (errors, ruleId) => errors.some(x => x.ruleId === ruleId);
 function runEslint(string, config) {
   const linter = new eslint.CLIEngine({
     useEslintrc: false,
-    configFile: path.join(__dirname, config)
+    configFile: path.join(__dirname, config),
   });
 
   return linter.executeOnText(string, path.join(__dirname, '../_x.ts')).results[0].messages;
