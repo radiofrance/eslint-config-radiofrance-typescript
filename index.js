@@ -1,76 +1,13 @@
-const getNamingConventionRule = () => ({
-  '@typescript-eslint/naming-convention': [
-    'error',
-    {
-      // selector: ['variableLike', 'memberLike', 'property', 'method'],
-      // Note: Leaving out `parameter` and `typeProperty` because of the mentioned known issues.
-      // Note: We are intentionally leaving out `enumMember` as it's usually pascal-case or upper-snake-case.
-      selector: ['variable', 'function', 'classProperty', 'objectLiteralProperty', 'parameterProperty', 'classMethod', 'objectLiteralMethod', 'typeMethod', 'accessor'],
-      format: [
-        'strictCamelCase',
-        'snake_case',
-      ].filter(Boolean),
-      // We allow double underscore because of GraphQL type names and some React names.
-      leadingUnderscore: 'allowSingleOrDouble',
-      trailingUnderscore: 'allow',
-      // Ignore `{'Retry-After': retryAfter}` type properties.
-      filter: {
-        regex: '[- ]',
-        match: false,
-      },
-    },
-    {
-      selector: 'typeLike',
-      format: [
-        'StrictPascalCase',
-      ],
-    },
-    {
-      selector: 'variable',
-      types: [
-        'boolean',
-      ],
-      format: [
-        'StrictPascalCase',
-      ],
-      prefix: [
-        'is',
-        'has',
-        'can',
-        'should',
-        'will',
-        'did',
-      ],
-    },
-    {
-      // Interface name should not be prefixed with `I`.
-      selector: 'interface',
-      filter: /^(?!I)[A-Z]/.source,
-      format: [
-        'StrictPascalCase',
-      ],
-    },
-    {
-      // Type parameter name should either be `T` or a descriptive name.
-      selector: 'typeParameter',
-      filter: /^T$|^[A-Z][a-zA-Z]+$/.source,
-      format: [
-        'StrictPascalCase',
-      ],
-    },
-    // Allow these in non-camel-case when quoted.
-    {
-      selector: [
-        'classProperty',
-        'objectLiteralProperty',
-      ],
-      format: null,
-      modifiers: [
-        'requiresQuotes',
-      ],
-    },
-  ],
-});
+const eslintConfigXoTypescript = require('eslint-config-xo-typescript');
+
+const ruleBanTypeOverride = eslintConfigXoTypescript.rules['@typescript-eslint/ban-types'];
+delete ruleBanTypeOverride[1].types.null;
+
+const ruleNamingConventionOverride = eslintConfigXoTypescript.rules['@typescript-eslint/naming-convention'];
+ruleNamingConventionOverride[1].format = [
+  'strictCamelCase',
+  'snake_case',
+];
 
 module.exports = {
   plugins: ['promise'],
@@ -79,9 +16,10 @@ module.exports = {
     'capitalized-comments': 'off',
     'promise/no-return-wrap': 'off',
     'no-console': 'error',
-    // Rewrite naming convention rule to allow `snake_case`.
-    // Copy from https://github.com/xojs/eslint-config-xo-typescript/blob/main/index.js#L3
-    ...getNamingConventionRule(),
+    // Override naming convention rule to allow `snake_case`.
+    '@typescript-eslint/naming-convention': ruleNamingConventionOverride,
+    // Override this rule to allow usage of null and undefined.
+    '@typescript-eslint/ban-types': ruleBanTypeOverride,
     // Disable this rule because we need interface and type.
     '@typescript-eslint/consistent-type-definitions': 'off',
   },
