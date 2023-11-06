@@ -9,6 +9,12 @@ ruleNamingConventionOverride[1].format = [
   'snake_case',
 ];
 
+ruleNamingConventionOverride.push({
+  selector: 'variable',
+  types: ['string', 'boolean', 'number'],
+  format: ['UPPER_CASE'],
+},)
+
 module.exports = {
   plugins: ['promise'],
   extends: ['xo', 'xo-typescript/space', 'plugin:promise/recommended'],
