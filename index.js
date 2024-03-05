@@ -10,28 +10,35 @@ ruleNamingConventionOverride[1].format = [
 ];
 
 module.exports = {
-  plugins: ['promise'],
-  extends: ['xo', 'xo-typescript/space', 'plugin:promise/recommended'],
-  rules: {
-    'capitalized-comments': 'off',
-    'promise/no-return-wrap': 'off',
-    'no-console': 'error',
-    // Override naming convention rule to allow `snake_case`.
-    '@typescript-eslint/naming-convention': ruleNamingConventionOverride,
-    // Override this rule to allow usage of null and undefined.
-    '@typescript-eslint/ban-types': ruleBanTypeOverride,
-    // Disable this rule because we need interface and type.
-    '@typescript-eslint/consistent-type-definitions': 'off',
-  },
   overrides: [
     {
       files: [
-        'test/**/*.ts',
+        '*.ts',
       ],
+      plugins: ['promise', 'import'],
+      extends: ['xo', 'xo-typescript/space', 'plugin:promise/recommended'],
       rules: {
-        '@typescript-eslint/no-unsafe-call': 'off',
-        '@typescript-eslint/no-unsafe-member-access': 'off',
-        '@typescript-eslint/no-unsafe-assignment': 'off',
+        'capitalized-comments': 'off',
+        'no-console': 'error',
+        // Override naming convention rule to allow `snake_case`.
+        '@typescript-eslint/naming-convention': ruleNamingConventionOverride,
+        // Override this rule to allow usage of null and undefined.
+        '@typescript-eslint/ban-types': ruleBanTypeOverride,
+        // Disable this rule because we need interface and type.
+        '@typescript-eslint/consistent-type-definitions': 'off',
+        'import/extensions': [
+          'error',
+          'ignorePackages',
+        ],
+        'import/no-duplicates': 'error',
+        'import/order': [
+          'error',
+          {
+            alphabetize: {
+              order: 'asc',
+            },
+          },
+        ],
       },
     },
   ],

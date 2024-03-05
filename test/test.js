@@ -1,27 +1,29 @@
-const path = require('path');
 const test = require('ava');
-const eslint = require('eslint');
+const {ESLint} = require('eslint');
 
-const config = '../index.js';
+const config = require('../index.js');
 
 const hasRule = (errors, ruleId) => errors.some(x => x.ruleId === ruleId);
 
-function runEslint(string, config) {
-  const linter = new eslint.CLIEngine({
+async function runEslint(string, config) {
+  const eslint = new ESLint({
     useEslintrc: false,
-    configFile: path.join(__dirname, config),
+    overrideConfig: config,
   });
 
-  return linter.executeOnText(string, path.join(__dirname, '../_x.ts')).results[0].messages;
+  const [firstResult] = await eslint.lintText(string, {filePath: 'test/_x.ts'});
+
+  return firstResult.messages;
 }
 
-// Cant be fixed due https://github.com/typescript-eslint/typescript-eslint/issues/885
-test.failing('main', t => {
-  const errors = runEslint('const foo: number = 5;', config);
+test('should throw error no-inferrable-types', async t => {
+  const errors = await runEslint('const foo: number = 5;\n', config);
   t.true(hasRule(errors, '@typescript-eslint/no-inferrable-types'), JSON.stringify(errors));
+  t.is(errors.length, 1);
 });
 
-test.failing('main error no-console', t => {
-  const errors = runEslint('\'use strict\';\nconst x = true;\n\nif (x) {\n  console.log();\n}\n', config);
+test('should throw error no-console', async t => {
+  const errors = await runEslint('\'use strict\';\nconst x = true;\n\nif (x) {\n  console.log();\n}\n', config);
   t.true(hasRule(errors, 'no-console'), JSON.stringify(errors));
+  t.is(errors.length, 1);
 });
