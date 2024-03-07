@@ -1,3 +1,6 @@
+> [!WARNING]
+> This repository is discontinued as it merged into [radiofrance/eslint-config-radiofrance](https://github.com/radiofrance/eslint-config-radiofrance).
+
 # eslint-config-radiofrance-typescript [![Build Status](https://travis-ci.org/radiofrance/eslint-config-radiofrance-typescript.svg?branch=master)](https://travis-ci.org/radiofrance/eslint-config-radiofrance-typescript)
 
 > ESLint [shareable config](http://eslint.org/docs/developer-guide/shareable-configs.html) extend from [eslint-config-xo](https://github.com/xojs/eslint-config-xo) and [eslint-config-xo-typescript](https://github.com/xojs/eslint-config-xo-typescript)
